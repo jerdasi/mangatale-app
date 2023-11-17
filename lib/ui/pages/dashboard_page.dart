@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mangatale/model/comic.dart';
 import 'package:mangatale/shared/theme.dart';
+import 'package:mangatale/ui/widgets/rating_widget.dart';
 
 class DashboardPage extends StatelessWidget {
-  DashboardPage({super.key});
-
-  final List<String> items = ['Item 1', 'Item 2', 'Item 3'];
+  const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,33 +25,52 @@ class DashboardPage extends StatelessWidget {
       ),
       body: SafeArea(
           child: SingleChildScrollView(
+              child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Popular Today'),
-            Container(
+            Text(
+              'Popular Today',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            SizedBox(
               height: 150,
               child: ListView.builder(
                 scrollDirection:
                     Axis.horizontal, // Mengatur arah scroll menjadi horizontal
-                itemCount: items.length,
+                itemCount: comicList.length,
                 itemBuilder: (context, index) {
+                  final Comic comic = comicList[index];
                   return Container(
-                    width: 200.0, // Lebar setiap item dalam carousel
-                    margin: EdgeInsets.all(8.0),
-                    color: Colors.blue,
-                    child: Center(
-                      child: Text(
-                        items[index],
-                        style: TextStyle(color: Colors.white, fontSize: 20.0),
-                      ),
-                    ),
-                  );
+                      height: 150,
+                      width: 150,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                              flex: 3,
+                              child: ClipRRect(
+                                child: Image.network(
+                                  comic.poster,
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              )),
+                          Expanded(child: Text(comic.judul)),
+                          RatingBintangWidget(rating: comic.rate / 2)
+                        ],
+                      ));
                 },
               ),
-            )
+            ),
           ],
         ),
-      )),
+      ))),
     );
   }
 }
