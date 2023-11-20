@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Comic {
   String judul;
   String poster;
@@ -22,6 +20,31 @@ class Comic {
       required this.yearReleased,
       required this.author,
       required this.genres});
+
+  dynamic getValue(String key) {
+    switch (key) {
+      case 'judul':
+        return judul;
+      case 'poster':
+        return poster;
+      case 'tipe':
+        return tipe;
+      case 'rate':
+        return rate;
+      case 'status':
+        return status;
+      case 'sinopsis':
+        return sinopsis;
+      case 'yearReleased':
+        return yearReleased;
+      case 'author':
+        return author;
+      case 'genres':
+        return genres;
+      default:
+        throw ArgumentError('Invalid property name: $key');
+    }
+  }
 }
 
 var comicList = [

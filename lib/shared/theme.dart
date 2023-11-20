@@ -7,3 +7,4 @@ Color mRatingColor = const Color(0xffffc700);
 Color mTipeManhwaColor = const Color(0xffa12e24);
 Color mTipeMangaColor = const Color(0xff009688);
 Color mWhiteColor = const Color(0xffefefef);
+Color mGrayColor = const Color(0xfff1f1f1);
