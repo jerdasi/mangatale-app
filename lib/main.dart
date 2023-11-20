@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mangatale/shared/theme.dart';
 import 'package:mangatale/ui/pages/dashboard_page.dart';
 import 'package:mangatale/ui/pages/splash_page.dart';
 
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Fira Sans'),
+      theme: ThemeData(
+          fontFamily: 'Fira Sans', scaffoldBackgroundColor: mBackgroundColor),
       home: DashboardPage(),
     );
   }
