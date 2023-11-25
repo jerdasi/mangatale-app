@@ -1,7 +1,23 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class SplashPage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:mangatale/ui/pages/dashboard_page.dart';
+
+class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
+
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    Timer(Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => DashboardPage()));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
